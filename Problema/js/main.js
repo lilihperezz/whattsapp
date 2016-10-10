@@ -1,35 +1,27 @@
-
 window.addEventListener("load",main);
+var inputMensajes = document.getElementById("mensajes");
+var chat = document.getElementById("chat");
+
 function main(){
-	var inputMensajes = document.getElementById("mensajes");
-	inputMensajes.addEventListener("keydown",InputMensajes);
-}
+ 	inputMensajes.addEventListener("keydown",InputMensajes);
+ }
 function InputMensajes(e){
 	var tecla = e.keyCode;
-	enterInput(tecla);
-	var inputMensajes = document.getElementById("mensajes");
-	var windowMessage =  document.createElement("div");
-	var chat = document.getElementById("chat");
-	var divHora = document.createElement("div"); 
-	var horaPub = fechaPub();
-	
-	windowMessage.innerText = inputMensajes.value;
-	divHora.textContent = horaPub;
-	chat.appendChild(windowMessage);
-	windowMessage.appendChild(divHora);
-}
-function enterInput(tecla) {
-	var inputMensajes = document.getElementById("mensajes");
-        if (tecla == 13) {
-        inputMensajes();
-    }
+	if (tecla == 13){
+	 	var windowMessage =  document.createElement("div");
+	 	var divHora = document.createElement("div"); 
+	 	var horaPub = fechaPub();
+		
+	 	windowMessage.innerText = inputMensajes.value;
+	 	divHora.textContent = horaPub;
+	 	chat.appendChild(windowMessage);
+	 	windowMessage.appendChild(divHora);
+	}
 }
 function fechaPub(){
-	var fecha = new Date();
+ 	var fecha = new Date();
     var hora = fecha.getHours();
     var minuto = fecha.getMinutes();
     var segundo = fecha.getSeconds();
-        return hora + ":" + minuto + ":" + segundo;
-	}
-
-
+    return hora + ":" + minuto ;
+}
